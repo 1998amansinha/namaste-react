@@ -98,13 +98,13 @@ The command `npm install parcel` installs the Parcel bundler and adds it as a de
 ### Installing React and ReactDOM
 As we can see, there are no CDN links. So, to connect our app with React, we need to run the command:
 
-```
+```bash
 npm install react
 ```
 
 This command will install React in our application. In our package.json, we can see we have React installed:
 
-```
+```json
 "dependencies": {
   "react": "^18.3.1"
 }
@@ -112,17 +112,19 @@ This command will install React in our application. In our package.json, we can 
 Similarly, we need to install react-dom:
 
 
-```npm install react-dom
+```bash
+npm install react-dom
 ```
 The updated dependencies section would look like this:
-```
+```json
 "dependencies": {
   "react": "^18.3.1",
   "react-dom": "^18.3.1"
 }
 ```
 
-```App.js: Uncaught ReferenceError: React is not defined
+```typescript
+App.js: Uncaught ReferenceError: React is not defined
 ```
 **If you encounter the error App.js:25 Uncaught ReferenceError: React is not defined, it is because we have only installed React but have not used it in our application.**
 
@@ -151,7 +153,7 @@ root.render(element);
 ```
 **The import React from 'react'; and import ReactDOM from 'react-dom/client'; statements help import React into our application. These imports are coming from node_modules.**
 
-```error
+```typescript
 Parcel Error: Browser scripts cannot have imports or exports
 ```
 You might encounter the error:
