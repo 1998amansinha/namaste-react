@@ -166,7 +166,7 @@ C:\Users\amans\OneDrive\Desktop\Codes\namaste-react\App.js:1:1
 ```  
 This error indicates that browser scripts cannot have imports or exports. The solution is to add type="module" to the <script> tag in your HTML file:
 
-```
+```javascript
 <script type="module" src="./App.js"></script>
 ```
 The Use of type="module"
