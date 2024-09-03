@@ -85,3 +85,112 @@ It's important to note that, at runtime, the developer console doesn't treat the
 The answer is that Parcel, the build tool, takes care of this process. However, Parcel doesn't do the transpiling directly. It delegates this task to Babel, which is responsible for converting the React object into HTML. Once this transpiling is complete, you'll see the h1 element in the developer console under the "Elements" tab, where it appears as a regular HTML heading tag with an id of "heading" and the text "Namaste React using JSX" as its child.
 
 This process highlights how JSX, Babel, and Parcel work together to simplify development and improve code readability in React.
+
+
+# React Components
+
+In React, everything is a component. Whether it's a button, a card, an input field, or a radio button, all are components. React components are the building blocks of a React application.
+
+## Types of Components
+
+There are two types of components in React:
+
+### Class-Based Components
+These are the older, more traditional way of defining components. They involve using ES6 classes and extending the `React.Component` class.
+
+### Functional Components
+These are the newer and more modern way of defining components. They are simply JavaScript functions that return JSX.
+
+## What is a Functional Component?
+
+A functional component is a JavaScript function that returns JSX. JSX is essentially a React element, which is an object representing a DOM node. So, when a function returns a React element (or object), it is considered a functional component.
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
+const Heading = () => {
+  return <h1 id='heading2'>Namaste React using functional component</h1>
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'))
+
+root.render(<Heading />)
+```
+one thing to note about Functional components is that a functional component is always named with an Upper Case.
+see the render
+it is returned as a fragment i.e. <Heading />
+
+## Writing Functional Components
+
+Functional components can be written in two ways:
+
+### With Return Statement
+
+In this approach, you use curly braces `{}` within the function and explicitly return the JSX using the `return` keyword.
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
+const Heading = () => {
+  return <h1 id='heading2'>Namaste React using functional component</h1>
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'))
+
+root.render(<Heading />)
+```
+
+### Without Return Statement
+In this approach, you can use parentheses () around the JSX, and the function will implicitly return the JSX without needing the return keyword.
+
+```javascript
+const MyComponent = () => (
+    <h1>Hello, this is a functional component without a return statement!</h1>
+);
+```
+
+# What is Component Composition?
+
+Component composition in React refers to the practice of combining multiple components to create a more complex or higher-level component. This allows for code reuse and better organization of your application's UI.
+
+## Understanding Component Composition with an Example
+
+Let's say you have two functional components: `TitleComponent` and `HeadingComponent`. Each of these components serves a specific purpose, like displaying a title or a heading. Now, you want to combine these two components into a single, main component.
+
+```javascript
+
+// Example of `TitleComponent`:
+function TitleComponent() {
+    return <h1>This is the Title</h1>;
+}
+
+// Example of HeadingComponent:
+function HeadingComponent() {
+    return <h2>This is the Heading</h2>;
+}
+
+// Using Component Composition
+
+// You can combine these two components into a main component using component composition. Here's how you might do it:
+
+function MainComponent() {
+    return (
+        <div>
+            <TitleComponent />
+            <HeadingComponent />
+        </div>
+    );
+}
+
+// Rendering the Composed Component
+
+// You can render the MainComponent just like any other component:
+
+ReactDOM.render(<MainComponent />, document.getElementById('root'));
+````
+
+**In this example, MainComponent is a composed component that includes both TitleComponent and HeadingComponent. When MainComponent is rendered, it will display both the title and the heading together.**
+
+By using component composition, you're able to build complex UIs by combining simpler components. This approach not only makes your code more modular and reusable but also helps in managing and organizing your application's structure more effectively.
