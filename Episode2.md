@@ -98,7 +98,8 @@ The command `npm install parcel` installs the Parcel bundler and adds it as a de
 ### Installing React and ReactDOM
 As we can see, there are no CDN links. So, to connect our app with React, we need to run the command:
 
-```npm install react
+```
+npm install react
 ```
 
 This command will install React in our application. In our package.json, we can see we have React installed:
@@ -127,7 +128,7 @@ The updated dependencies section would look like this:
 
 Using React and ReactDOM
 
-```
+```javascript
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
@@ -150,12 +151,12 @@ root.render(element);
 ```
 **The import React from 'react'; and import ReactDOM from 'react-dom/client'; statements help import React into our application. These imports are coming from node_modules.**
 
-```
+```error
 Parcel Error: Browser scripts cannot have imports or exports
 ```
 You might encounter the error:
 
-```
+```typescript
 2index.js:1 🚨 [parcel]: @parcel/transformer-js: Browser scripts cannot have imports or exports.
 C:\Users\amans\OneDrive\Desktop\Codes\namaste-react\App.js:1:1
 > 1 | import React from 'react';
