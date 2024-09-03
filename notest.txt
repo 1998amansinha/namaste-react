@@ -1,0 +1,82 @@
+<---------------- Printing hello world using js ------------------------>
+
+lets create a element
+
+const heading = document.createElement('h1')
+heading.innerHTML = 'Hello World!'
+
+const divElement = document.getElementById('root')
+divElement.appendChild(heading)
+
+<---------------- Printing hello world using react ------------------------>
+
+so first of all our system need to know that we are using react so how it can be done 
+well it can be done using react cdn script
+
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+
+<---------------- For creating a Single Element ---------------------------->
+
+<div id="root">
+  <h1>I will be replaced by the root.render</h1>
+</div>
+
+Element is created using react
+
+
+const element = React.createElement(
+"h1", //type
+{ id: "create" }, // Attribute {props.id}
+"Hello World using React!" // props.children
+);
+
+<---------------------- For Nested Structure ---------------------------->
+
+/*
+<div id="parent">
+    <div id="child1">
+        <h1 id="print">I am an H1 tag</h1>
+        <h2 id="print">I am an H2 tag</h2> // how can we give this type of multiple nested child . so this can be done using array means creating an array of children
+    </div>
+    <div id="child2">
+        <h1 id="print">I am an H1 tag</h1>
+        <h2 id="print">I am an H2 tag</h2> // how can we give this type of multiple nested child . so this can be done using array means creating an array of children
+    </div>
+</div>
+*/
+
+
+So this type of nested structure is created in react like the below
+
+
+const element = React.createElement("div", { id: "parent" }, [ //we can append multiple children element using array
+  React.createElement("div", { id: "child1" }, [
+    React.createElement("h1", { id: "print" }, "I am an H1 tag"), //array of childrens for child
+    React.createElement("h2", { id: "print2" }, "I am an H2 tag"),
+  ]),
+  React.createElement("div", { id: "child2" }, [
+    React.createElement("h1", {}, "I am an h1 tag"),
+    React.createElement("h2", {}, "I am an h2 tag"),
+  ]),
+]);
+
+Here React.createElement is an (object {})
+inside of this object we have differnt things like props, key, attribute, children many thing,
+here {id: "child"} is an attribute
+h1 or div or span or p  -> type
+"I am ....." -> props.children
+
+
+console.log(element); // here React.createElment is just an object with a props
+
+<-----------------         -------------------------------->
+To render something in the dom in react we use react-dom
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+// console.log(root) // here ReactDom.createRoot is {_internalRoot: FiberRootNode} a FiberRootNode.
+
+<----------------            ------------------->
+// now to render the created element on the browser we have to render it using the react-dom.
+root.render(element);
