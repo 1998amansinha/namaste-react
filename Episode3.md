@@ -189,8 +189,63 @@ function MainComponent() {
 // You can render the MainComponent just like any other component:
 
 ReactDOM.render(<MainComponent />, document.getElementById('root'));
-````
+```
 
 **In this example, MainComponent is a composed component that includes both TitleComponent and HeadingComponent. When MainComponent is rendered, it will display both the title and the heading together.**
 
 By using component composition, you're able to build complex UIs by combining simpler components. This approach not only makes your code more modular and reusable but also helps in managing and organizing your application's structure more effectively.
+
+# JS in Functional components
+
+In React functional components, you can directly use JavaScript expressions inside the JSX by enclosing them in curly braces {}. This allows you to perform operations, define variables, or even call functions within your JSX.
+
+```jsx
+function MainComponent() {
+  return (
+    <div>
+      {Heading} we can also put variable in our functional component 
+      <h2>{2 + 2}</h2> we can also do js in this 
+      {TitleComponent()}
+      <TitleComponent/>
+      <TitleComponent></TitleComponent> // the above 3 are the same 
+      <TitleComponent />
+      <HeadingComponent />
+    </div>
+  );
+}
+```
+
+# Cross-Site Scripting (XSS)
+
+It is a security vulnerability that allows an attacker to inject malicious code, often JavaScript, into a web application. When a user unknowingly interacts with this malicious code, it can lead to various harmful outcomes, such as data theft, session hijacking, or redirecting the user to a malicious site.
+
+In the context of React and JSX, React provides a level of protection against XSS attacks by escaping values before rendering them into the DOM. This means that React automatically ensures that any content or code that you render in your JSX is safe, preventing the execution of malicious scripts.
+
+For example, if you have a piece of user-generated content that you render in your JSX:
+
+```jsx
+function MyComponent() {
+  const userInput = "<script>alert('Hacked!');</script>";
+
+  return (
+    <div>
+      {userInput}
+    </div>
+  );
+}
+```
+
+In this case, instead of executing the script, React will escape the content and render it as plain text:
+
+```html
+<div>&lt;script&gt;alert('Hacked!');&lt;/script&gt;</div>
+```
+
+This behavior is crucial in preventing XSS attacks because it ensures that potentially harmful code injected by a user will not be executed in the browser.
+
+However, it is important to note that if you explicitly tell React to render raw HTML (e.g., by using `dangerouslySetInnerHTML`), you lose this protection. So, you should always sanitize any user input before using `dangerouslySetInnerHTML`.
+
+In summary:
+- React’s JSX inherently protects against XSS by escaping values.
+- Be cautious when using `dangerouslySetInnerHTML` to avoid bypassing these protections.
+- Always sanitize user input to prevent XSS vulnerabilities when dealing with raw HTML.
