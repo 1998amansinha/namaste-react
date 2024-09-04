@@ -1,10 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-const heading = React.createElement('h1', {id: 'heading'}, "Namaste React")
+function TitleComponent() {
+  return <h1>This is the Title Component</h1>;
+}
 
-const jsxHeading = <h1 id='heading2'>Namaste React using JSX</h1>
+function HeadingComponent() {
+  return <h2>This is the Heading component</h2>;
+}
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
+const Heading = <h2>Hello</h2>;
+function MainComponent() {
+  return (
+    <div>
+      {/* {Heading} we can also put variable in our functional component 
+      <h2>{2 + 2}</h2> //we can also do js in this */}
+      {TitleComponent()}
+      <TitleComponent/>
+      <TitleComponent></TitleComponent> // the above 3 are the same 
+      <TitleComponent />
+      <HeadingComponent />
+    </div>
+  );
+}
 
-root.render(jsxHeading)
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(<MainComponent />);
