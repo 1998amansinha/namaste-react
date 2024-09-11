@@ -2,6 +2,7 @@ import { CARD_URL } from "../utils/constant";
 
 const Card = (props) => {
   const { resData } = props;
+
   const {
     cloudinaryImageId,
     name,
@@ -9,6 +10,7 @@ const Card = (props) => {
     avgRatingString,
     sla: { deliveryTime },
   } = resData?.info;
+  
   return (
     <div className="card">
       <div className="cardLogo">
