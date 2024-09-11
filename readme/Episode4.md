@@ -169,6 +169,8 @@ sla: { deliveryTime },
 } = resData?.info;
 
 
+# *Uni-directional Data Flow :- means data flow from parent to child only.*
+
 
 # Mapping over Arrays:
 
