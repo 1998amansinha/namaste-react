@@ -5,9 +5,10 @@
 Props (short for "properties") are a way to pass dynamic data from a parent component to a child component in React. They function similarly to arguments in JavaScript functions.
 
 Example:
+
 ```jsx
 <ChildComponent name="John" />
-```	
+```
 
 In this example, the name prop is passed to the ChildComponent from the parent component.
 
@@ -25,7 +26,7 @@ You can set default values for props directly in the parameter list of functiona
 function ChildComponent({ name = "Guest" }) {
   return <div>Hello, {name}!</div>;
 }
-```	
+```
 
 Usage:
 
@@ -51,6 +52,7 @@ class Greeting extends React.Component {
 ```
 
 // Usage:
+
 ```jsx
 <Greeting />         // Renders: Hello, Guest!
 <Greeting name="Jane" />  // Renders: Hello, Jane!
@@ -61,8 +63,9 @@ class Greeting extends React.Component {
 You can use PropTypes to enforce type checking on props, ensuring that the data passed to your component is valid. This is especially useful in development to catch bugs early.
 
 Example:
+
 ```jsx
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 function Greeting({ name }) {
   return <h1>Hello, {name}!</h1>;
@@ -72,6 +75,7 @@ Greeting.propTypes = {
   name: PropTypes.string.isRequired, // name must be a string and required
 };
 ```
+
 If the name prop is not passed or is of the wrong type, a warning will be displayed in the console during development.
 
 ## Destructuring Props
@@ -79,11 +83,13 @@ If the name prop is not passed or is of the wrong type, a warning will be displa
 Props can be destructured directly in the function signature or within the function body for more concise and readable code.
 
 Example:
+
 ```jsx
 function Greeting({ name }) {
   return <h1>Hello, {name}!</h1>;
 }
 ```
+
 This simplifies access to individual props, avoiding the need to repeatedly reference props.name.
 
 ## The Children Prop
@@ -91,6 +97,7 @@ This simplifies access to individual props, avoiding the need to repeatedly refe
 The children prop is a special prop in React that allows you to pass nested content between the opening and closing tags of a component.
 
 Example:
+
 ```jsx
 function Wrapper({ children }) {
   return <div className="wrapper">{children}</div>;
@@ -107,14 +114,55 @@ This is particularly useful for layout components (e.g., modals, cards) where yo
 In complex components, you can use the spread operator to pass multiple props efficiently.
 
 Example:
+
 ```jsx
-Copy code
 const data = { name: "Alice", age: 25 };
-<Greeting {...data} />
+<Greeting {...data} />;
 ```
+
 This automatically passes both name and age as props to the Greeting component, making prop passing more concise, especially when dealing with many props.
 
 ## Conclusion
 
-***Props in React are powerful and flexible, allowing components to be reusable and dynamic. Understanding how to effectively manage and validate props, handle default values, and optimize the flow of data in React components is essential for writing clean, maintainable React applications.***
+**_Props in React are powerful and flexible, allowing components to be reusable and dynamic. Understanding how to effectively manage and validate props, handle default values, and optimize the flow of data in React components is essential for writing clean, maintainable React applications._**
 
+```javascript
+import { CARD_URL } from "../utils/constant";
+
+const Card = (props) => {
+  const { resData } = props;
+
+  const {
+    cloudinaryImageId,
+    name,
+    cuisines,
+    avgRatingString,
+    sla: { deliveryTime },
+  } = resData?.info;
+
+  return (
+    <div className="card">
+      <div className="cardLogo">
+        <img src={CARD_URL + cloudinaryImageId} alt="food image" />
+      </div>
+      <div className="description">
+        <h3>{name}</h3>
+        <h4>{cuisines.join(", ")}</h4>
+        <h5>{avgRatingString} stars</h5>
+        <h5>{deliveryTime} minutes</h5>
+      </div>
+    </div>
+  );
+};
+
+export default Card;
+```
+
+### Destructuring Props
+const {
+cloudinaryImageId,
+name,
+cuisines,
+avgRatingString,
+sla: { deliveryTime },
+} = resData?.info;
