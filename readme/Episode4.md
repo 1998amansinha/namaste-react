@@ -116,5 +116,5 @@ This automatically passes both name and age as props to the Greeting component, 
 
 ## Conclusion
 
-**Props in React are powerful and flexible, allowing components to be reusable and dynamic. Understanding how to effectively manage and validate props, handle default values, and optimize the flow of data in React components is essential for writing clean, maintainable React applications.**
+***Props in React are powerful and flexible, allowing components to be reusable and dynamic. Understanding how to effectively manage and validate props, handle default values, and optimize the flow of data in React components is essential for writing clean, maintainable React applications.***
 
