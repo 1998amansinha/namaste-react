@@ -1,29 +1,41 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LOGO_URL } from "../utils/constant";
+import { Link } from "react-router-dom";
 
 const Header = () => {
+  const [btnName, setBtnName] = useState("Login");
 
-  const [btnName, setBtnName] = useState("Login")
+  console.log("Header rendered");
 
-  const handleLoginClick = () => {
-    setBtnName(btnName==="Login" ? "Logout" : "Login");
-  };
+  useEffect(() => {
+    console.log("useEffect() called");
+  }, []);
 
   return (
     <div className="header">
       <div className="headerLogo">
-        <img
-          src={LOGO_URL}
-          alt="logo"
-        />
+        <img src={LOGO_URL} alt="logo" />
       </div>
       <div className="navItems">
         <ul>
-          <li>Home</li>
-          <li>About us</li>
-          <li>Contact Us</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About us</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact us</Link>
+          </li>
           <li>Cart</li>
-          <button className="login" onClick={handleLoginClick}>{btnName}</button> 
+          <button
+            className="login"
+            onClick={() => {
+              setBtnName(btnName === "Login" ? "Logout" : "Login");
+            }}
+          >
+            {btnName}
+          </button>
         </ul>
       </div>
     </div>
