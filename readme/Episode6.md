@@ -34,7 +34,53 @@
 
 Microservices are generally preferred in large-scale applications, where scalability and flexibility are key. Monolithic architectures work well for small to medium applications or where simplicity is more important than scalability.
 
-Is there anything specific you'd like to dive deeper into about these architectures?
+<-------------------------------------------------------------------------------------------------------------------------------------->
+
+# **React** and **useEffect**.
+
+### 1. **First Approach (Page Loads → API Call → Render UI)**:
+- **Flow**: 
+   1. The **page loads**.
+   2. The **API call** is made to fetch the data (for example, fetching a list of restaurants).
+   3. Once the data is retrieved, the UI is **rendered** using the fetched data.
+   
+- **Characteristics**:
+   - In this approach, the UI only renders **after the data has been fetched**.
+   - This means the user might see a delay or a "blank page" until the API call completes, which can lead to a poor user experience.
+
+- **Why it’s less ideal**:
+   - It creates a perception of slower performance because users must wait for the data to load before seeing anything on the screen.
+   - The page remains empty until the API call finishes.
+
+### 2. **Second Approach (Page Loads → UI Renders → API Call → UI Re-renders)**:
+- **Flow**:
+   1. **Page loads**, and the UI is **rendered** immediately, even before the data is fetched.
+   2. The **API call** is made using `useEffect` to fetch the necessary data.
+   3. Once the API call is complete, the UI **re-renders** with the fetched data.
+
+- **Characteristics**:
+   - In this approach, the UI is shown **immediately**, usually with placeholders (like a loading spinner or shimmer) until the API response is received.
+   - Once the API call completes, the data is fetched and stored in a state variable, and the UI is re-rendered to display the actual data.
+
+- **Why it’s more ideal**:
+   - Users see something on the screen right away (e.g., loading spinner or shimmer effect).
+   - This approach creates a smoother user experience because users can see that the app is working (loading state) even if the data hasn’t arrived yet.
+
+### How **useEffect** fits in:
+- In the second approach, **useEffect** is used to make the API call after the **initial render** of the UI.
+- **useEffect(() => { ... }, [])**:
+   - The empty dependency array (`[]`) ensures that the effect (API call) only runs **once** when the component mounts (or when the page first loads).
+   - After the data is fetched, you update the state (e.g., using `useState`), which triggers a **re-render** of the component.
+   
+- **Re-rendering**:
+   - When the state is updated with the fetched data (e.g., `setListOfRestaurant`), React **re-renders** the component, updating the UI with the actual data.
+   - **Without dependencies in `useEffect`**, the API call happens once, and the UI re-renders once the data is available.
+
+### Summary:
+- **First Approach**: The UI doesn’t render until the API call is complete (which can lead to a blank screen).
+- **Second Approach (preferred)**: The UI renders first with placeholders (like a loading spinner or shimmer), then re-renders with the actual data after the API call completes. This approach improves the user experience by using **useEffect** to manage the API call and the subsequent UI re-render.
+
+So yes, using **useEffect** ensures the API call happens only once on component mount, and the UI is re-rendered **once** with the fetched data.
 
 ```js
 import { useEffect, useState } from "react";
