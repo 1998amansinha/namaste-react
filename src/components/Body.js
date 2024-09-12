@@ -4,7 +4,6 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [resturantList, setResturantList] = useState([]);
-  // const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -31,8 +30,6 @@ const Body = () => {
     <div className="body">
       <h1>Welcome to our website!</h1>
       <div className="searchBar">
-        {/* <input type="text" value={searchText} />
-        <button className="search-btn" >Search</button> */}
         <button
           className="search-btn"
           onClick={() => {
@@ -46,8 +43,8 @@ const Body = () => {
         </button>
       </div>
       <div className="cards">
-        {resturantList.map((resturants) => (
-          <Card key={resturants.info.id} resData={resturant} />
+        {resturantList.map((resturant) => (
+          <Card key={resturant.info.id} resData={resturant} />
         ))}
       </div>
     </div>
