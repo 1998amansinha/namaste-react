@@ -183,3 +183,50 @@ export default Body;
 - User interactions trigger filtering logic, updating `filteredRestaurant` and causing the UI to re-render with the filtered data.
 
 So, as you mentioned, **for the initial render, `filteredRestaurant` is essentially unfiltered, and only after the API data is fetched does the filtering (if any) happen.** That’s why your approach of mapping over `filteredRestaurant` from the start works as expected.
+
+
+<-------------------------------------------------------------------------------------------------------------------------------------->
+# **React development**
+
+### 1. **Shimmer UI (or Skeleton UI)**:
+- **Definition**: Shimmer UI (or Skeleton UI) refers to a **placeholder or loading UI** that is shown while waiting for data (typically from an API call) to load. This skeleton acts as a visual representation of what the content will look like, providing a better user experience by indicating that content is on the way.
+  
+- **Purpose**: 
+  - **Improves user experience**: Instead of showing a blank screen while waiting for data, the shimmer UI gives users an idea of what will eventually appear.
+  - **Keeps the UI responsive**: Users can see that the app is loading content, which makes the application feel faster and more responsive.
+
+- **Example**: In your case, you’re using a **Shimmer** component that acts as a loading indicator before the restaurant list is fetched.
+
+### 2. **Conditional Rendering**:
+- **Definition**: Conditional rendering means displaying content based on a certain condition. In React, you decide whether to render certain components or not based on conditions such as boolean values, API responses, or user actions.
+
+- **Example**: In your code, you use conditional rendering to decide whether to show the **Shimmer** component or the list of restaurants. If the `listOfRestaurant` is empty, the **Shimmer** is shown; otherwise, the restaurant list is displayed.
+
+- **Common Syntax**:
+  - **Ternary Operator**: `{ condition ? <Component1 /> : <Component2 /> }`
+  - **Logical AND**: `{ condition && <Component /> }` (only renders the component if the condition is true).
+
+- **Use cases**: 
+  - Loading spinners (like your shimmer).
+  - Displaying error messages when API calls fail.
+  - Hiding or showing buttons based on user authentication.
+
+### 3. **Reconciliation Process**:
+- **Definition**: The **reconciliation process** in React refers to how React updates the UI efficiently when a component's state or props change. React doesn’t re-render the entire UI. Instead, it compares the current state of the Virtual DOM with the previous state and updates only the parts of the actual DOM that have changed. This process is key to React’s performance optimization.
+
+- **Trigger**: The **reconciliation** process is triggered whenever:
+  - A **local state variable** is updated using `setState` or `useState`.
+  - A **prop** is updated (when data is passed down from a parent component to a child component).
+  
+- **Why it’s important**: React’s reconciliation process ensures that only the parts of the component tree that need to be updated are changed, minimizing the number of DOM manipulations and improving performance.
+
+- **Component Re-rendering**:
+  - Whenever the state in a component changes, the **entire component re-renders**.
+  - However, React optimizes this by updating only the part of the UI that is different, thanks to the **Virtual DOM** and **diffing algorithm**.
+
+### Summary of Key Points:
+1. **Shimmer UI**: Placeholder UI shown before the actual data is loaded to keep the user engaged and avoid a blank screen.
+2. **Conditional Rendering**: Dynamically showing components based on certain conditions, improving the flexibility and behavior of the UI.
+3. **Reconciliation Process**: React’s method of updating only the parts of the UI that have changed when state or props are updated, making the UI more efficient.
+
+These concepts are central to building efficient, responsive, and dynamic UIs in React. Do you have any specific questions about implementing these in a project?
