@@ -1,0 +1,84 @@
+/* Header container styling */
+.header {
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Logo container */
+.headerLogo img {
+    width: 120px;
+    height: auto;
+}
+
+/* Navigation container */
+.navItems ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+/* Navigation links */
+.navItems ul li {
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.navItems ul li a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.navItems ul li a:hover {
+    color: #0077ff;
+}
+
+/* Login button styling */
+.login {
+    background-color: #0077ff;
+    color: white;
+    font-size: 16px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login:hover {
+    background-color: #005bb5;
+}
+
+/* Sticky header when scrolling */
+.header.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .header {
+        padding: 15px 20px;
+    }
+
+    .navItems ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .headerLogo img {
+        width: 100px;
+    }
+}

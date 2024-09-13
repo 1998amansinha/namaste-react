@@ -1,0 +1,74 @@
+.resturntMenu {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.resturntMenu h1 {
+    font-size: 28px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.infoCard {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.infoCard h4 {
+    margin: 8px 0;
+    color: #555;
+}
+
+.infoCard p {
+    color: #888;
+}
+
+.menuContainer {
+    margin-top: 20px;
+}
+
+.menuContainer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menuContainer li {
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.menuContainer li:hover {
+    transform: translateY(-5px);
+}
+
+.menuContainer h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.menuContainer h4 {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.menuContainer h5 {
+    font-size: 16px;
+    color: #f46666;
+    margin-bottom: 4px;
+}
+
+.menuContainer p {
+    font-size: 14px;
+    color: #777;
+}

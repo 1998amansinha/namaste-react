@@ -1,4 +1,5 @@
 import { CARD_URL } from "../utils/constant";
+import '../components/css/Card.css'
 
 const Card = (props) => {
   const { resData } = props;
