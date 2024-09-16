@@ -1,5 +1,3 @@
-import '../components/css/Contact.css'
-
 const Contact = () => {
   return (
     <div className="contact-container">

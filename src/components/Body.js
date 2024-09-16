@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Card from "./Card";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-import "../components/css/Body.css";
 import useOnlineStatus from "../utils/Hooks/useOnlineStatus";
 
 const Body = () => {

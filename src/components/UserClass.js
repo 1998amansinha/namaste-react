@@ -1,5 +1,4 @@
 import React from "react";
-import "../components/css/User.css";
 
 class UserClass extends React.Component {
   constructor(props) {
@@ -19,7 +18,7 @@ class UserClass extends React.Component {
     const json = await data.json();
 
     this.setState({ userInfo: json });
-    console.log(json);
+    // console.log(json);
   }
 
   render() {
