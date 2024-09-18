@@ -39,22 +39,25 @@ const Body = () => {
   return !listOfResturant.length ? (
     <Shimmer />
   ) : (
-    <div className="body">
-      <h1>Welcome to our website!</h1>
-      <div className="searchBar">
+    <div className="m-2">
+      <h1 className="text-3xl font-bold text-center my-4">
+        Welcome to our website!
+      </h1>
+
+      {/* Search Bar */}
+      <div className="searchBar flex flex-col sm:flex-row items-center justify-center m-4 p-4 space-y-4 sm:space-y-0 sm:space-x-4 bg-gray-100 rounded-lg shadow-lg">
         <input
           type="text"
+          className="border border-solid border-black rounded p-2 w-full sm:w-auto"
+          placeholder="Search Restaurants..."
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
         <button
-          className="search"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition-colors w-full sm:w-auto"
           onClick={() => {
-            const filteredResturant = listOfResturant.filter(
-              (
-                res // filter over original resturantList
-              ) =>
-                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+            const filteredResturant = listOfResturant.filter((res) =>
+              res.info.name.toLowerCase().includes(searchText.toLowerCase())
             );
             setFilteredResturant(filteredResturant);
           }}
@@ -62,7 +65,7 @@ const Body = () => {
           Search
         </button>
         <button
-          className="search-btn"
+          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-6 rounded transition-colors w-full sm:w-auto"
           onClick={() => {
             const filteredList = listOfResturant.filter(
               (res) => res.info.avgRating >= 4.5
@@ -70,12 +73,17 @@ const Body = () => {
             setFilteredResturant(filteredList);
           }}
         >
-          Top Rated Resturants
+          Top Rated Restaurants
         </button>
       </div>
-      <div className="cards">
+
+      {/* Restaurant Cards */}
+      <div className="cards grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredResturant.map((resturant) => (
-          <Link to={"/resturants/" + resturant.info.id} key={resturant.info.id}>
+          <Link
+            to={"/restaurants/" + resturant.info.id}
+            key={resturant.info.id}
+          >
             <Card resData={resturant} />
           </Link>
         ))}

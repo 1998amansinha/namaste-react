@@ -8,40 +8,50 @@ const Header = () => {
 
   const onlineStatus = useOnlineStatus();
 
-  useEffect(() => {
-    console.log("useEffect() called");
-  }, []);
-
   return (
-    <div className="header">
-      <div className="headerLogo">
-        <img src={LOGO_URL} alt="logo" />
+    <div className="flex justify-between items-center m-4 p-4 bg-slate-100 shadow-lg rounded-lg">
+      <div className="w-40">
+        <img src={LOGO_URL} alt="logo" className="w-full h-auto" />
       </div>
-      <div className="navItems">
-        <ul>
-          <li>Online Status : {onlineStatus ? "✅" : "🔴"}</li>
-          <li>
-            <Link to="/">Home</Link>
+      <div className="flex items-center">
+        <ul className="flex space-x-6 text-lg font-medium">
+          <li className="flex items-center">
+            Online Status : {onlineStatus ? "✅" : "🔴"}
           </li>
           <li>
-            <Link to="/about">About us</Link>
+            <Link to="/" className="hover:text-blue-500 transition-colors">
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/contact">Contact us</Link>
+            <Link to="/about" className="hover:text-blue-500 transition-colors">
+              About Us
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/contact"
+              className="hover:text-blue-500 transition-colors"
+            >
+              Contact Us
+            </Link>
           </li>
           <li>Cart</li>
           <li>
-            <Link to="/grocery">Grocery</Link>
+            <Link
+              to="/grocery"
+              className="hover:text-blue-500 transition-colors"
+            >
+              Grocery
+            </Link>
           </li>
-          <button
-            className="login"
-            onClick={() => {
-              setBtnName(btnName === "Login" ? "Logout" : "Login");
-            }}
-          >
-            {btnName}
-          </button>
         </ul>
+        <button
+          className="ml-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition-colors"
+          onClick={() => setBtnName(btnName === "Login" ? "Logout" : "Login")}
+        >
+          {btnName}
+        </button>
       </div>
     </div>
   );

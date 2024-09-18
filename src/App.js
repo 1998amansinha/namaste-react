@@ -51,7 +51,7 @@ const routeElement = createBrowserRouter([
         ),
       },
       {
-        path: "/resturants/:resId",
+        path: "/restaurants/:resId",
         element: <ResturantMenu />,
       },
     ],
