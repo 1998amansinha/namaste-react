@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Card from "./Card";
+import Card, { withPromotedLabel } from "./Card";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/Hooks/useOnlineStatus";
@@ -12,6 +12,9 @@ const Body = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+
+  const ResturantPromotedLabel = withPromotedLabel(Card);
 
   const fetchData = async () => {
     const response = await fetch(
@@ -84,7 +87,11 @@ const Body = () => {
             to={"/restaurants/" + resturant.info.id}
             key={resturant.info.id}
           >
-            <Card resData={resturant} />
+            {resturant.info.promoted ? (
+              <ResturantPromotedLabel resData={resturant}/>
+            ) : (
+              <Card resData={resturant} />
+            )}
           </Link>
         ))}
       </div>

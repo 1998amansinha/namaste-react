@@ -32,4 +32,13 @@ const Card = (props) => {
   );
 };
 
+export const withPromotedLabel = (Card) => {
+  return (props) => {
+    <div>
+      <label>Promoted</label>
+      <Card {...props} />
+    </div>;
+  };
+};
+
 export default Card;

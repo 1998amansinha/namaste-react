@@ -26,6 +26,7 @@ const ResturantMenu = () => {
   const { itemCards } =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
 
+
   return (
     <div className="resturantMenu m-4">
       {/* Restaurant Name */}
