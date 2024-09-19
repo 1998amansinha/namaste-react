@@ -1,14 +1,11 @@
-import { useState } from "react";
 import ItemList from "./ItemList";
 
-const ResturantCategory = ({ data }) => {
+const ResturantCategory = ({ data, showItems, setShowIndex }) => {
   // console.log(data);
 
-  const [showItems, setShowItems] = useState(false);
-
   const handleOnClick = () => {
-    setShowItems(!showItems);
-  };
+    setShowIndex()
+  }
 
   return (
     <div className="flex justify-center cursor-pointer">
