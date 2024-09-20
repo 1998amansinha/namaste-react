@@ -1,4 +1,11 @@
-import React, { lazy, Suspense } from "react";
+import React, {
+  lazy,
+  Suspense,
+  useContext,
+  useEffect,
+  useState,
+  createContext,
+} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -7,6 +14,7 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import ResturantMenu from "./components/ResturantMenu";
+import UserContext from "./utils/UserContext";
 
 // Lazy loading
 // Code Splitting
@@ -17,11 +25,26 @@ import ResturantMenu from "./components/ResturantMenu";
 const Grocery = lazy(() => import("./components/Grocery"));
 
 const App = () => {
+  // const { loggedInUser } = useContext(UserContext);
+
+  const [userInfo, SetUserInfo] = useState();
+
+  useEffect(() => {
+    const data = {
+      name: "Aman Sinha",
+    };
+    SetUserInfo(data.name);
+  }, []);
+
+  console.log(userInfo);
+
   return (
-    <div className="root">
-      <Header />
-      <Outlet />
-    </div>
+    <UserContext.Provider value={{loggedInUser : userInfo, SetUserInfo}}>
+      <div className="root">
+        <Header />
+        <Outlet />
+      </div>
+    </UserContext.Provider>
   );
 };
 

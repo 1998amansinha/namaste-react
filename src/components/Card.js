@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { CARD_URL } from "../utils/constant";
+import UserContext from "../utils/UserContext";
 
 const Card = (props) => {
   const { resData } = props;
+
+  const { loggedInUser} = useContext(UserContext)
 
   const {
     cloudinaryImageId,
@@ -27,6 +31,7 @@ const Card = (props) => {
           <h5>{avgRatingString} ★</h5>
           <h5>{deliveryTime} min</h5>
         </div>
+          <h5>User : {loggedInUser} </h5>
       </div>
     </div>
   );

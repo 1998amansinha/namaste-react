@@ -1,18 +1,20 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Card, { withPromotedLabel } from "./Card";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/Hooks/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [listOfResturant, setListOfResturant] = useState([]);
   const [filteredResturant, setFilteredResturant] = useState([]);
   const [searchText, setSearchText] = useState("");
 
+  const { loggedInUser, SetUserInfo } = useContext(UserContext);
+
   useEffect(() => {
     fetchData();
   }, []);
-
 
   const ResturantPromotedLabel = withPromotedLabel(Card);
 
@@ -78,6 +80,14 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button>
+        <div className="">
+          <input
+            type="text"
+            className="border border-black"
+            value={loggedInUser}
+            onChange={(e) => SetUserInfo(e.target.value)}
+          />
+        </div>
       </div>
 
       {/* Restaurant Cards */}
@@ -88,7 +98,7 @@ const Body = () => {
             key={resturant.info.id}
           >
             {resturant.info.promoted ? (
-              <ResturantPromotedLabel resData={resturant}/>
+              <ResturantPromotedLabel resData={resturant} />
             ) : (
               <Card resData={resturant} />
             )}

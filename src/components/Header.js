@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LOGO_URL } from "../utils/constant";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/Hooks/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
+
+  const { loggedInUser } = useContext(UserContext);
 
   const onlineStatus = useOnlineStatus();
 
@@ -45,13 +48,14 @@ const Header = () => {
               Grocery
             </Link>
           </li>
+          <button
+            className="ml-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition-colors"
+            onClick={() => setBtnName(btnName === "Login" ? "Logout" : "Login")}
+          >
+            {btnName}
+          </button>
+          <li>{loggedInUser}</li>
         </ul>
-        <button
-          className="ml-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition-colors"
-          onClick={() => setBtnName(btnName === "Login" ? "Logout" : "Login")}
-        >
-          {btnName}
-        </button>
       </div>
     </div>
   );
