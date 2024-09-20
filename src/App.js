@@ -15,6 +15,9 @@ import Error from "./components/Error";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import ResturantMenu from "./components/ResturantMenu";
 import UserContext from "./utils/UserContext";
+import appStore from "./utils/redux/appStore";
+import { Provider } from "react-redux";
+import Cart from "./components/Cart";
 
 // Lazy loading
 // Code Splitting
@@ -36,15 +39,17 @@ const App = () => {
     SetUserInfo(data.name);
   }, []);
 
-  console.log(userInfo);
+  // console.log(userInfo);
 
   return (
-    <UserContext.Provider value={{loggedInUser : userInfo, SetUserInfo}}>
-      <div className="root">
-        <Header />
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userInfo, SetUserInfo }}>
+        <div className="root">
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -77,6 +82,10 @@ const routeElement = createBrowserRouter([
         path: "/restaurants/:resId",
         element: <ResturantMenu />,
       },
+      {
+        path: '/cart',
+        element: <Cart />
+      }
     ],
     errorElement: <Error />,
   },
