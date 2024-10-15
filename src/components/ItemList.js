@@ -14,6 +14,7 @@ const ItemList = ({ items }) => {
     <div className="my-2 ">
       {items.map((item) => (
         <div
+          data-testid="menuItem"
           key={item.card.info.id}
           className="flex justify-between shadow-md my-4 rounded-lg"
         >

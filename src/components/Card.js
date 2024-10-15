@@ -4,7 +4,7 @@ import UserContext from "../utils/UserContext";
 
 const Card = (props) => {
   const { resData } = props;
-
+  
   const { loggedInUser} = useContext(UserContext)
 
   const {
@@ -16,7 +16,7 @@ const Card = (props) => {
   } = resData?.info;
 
   return (
-    <div className="card border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+    <div data-testid="resCard" className="card border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
       <div className="cardLogo">
         <img
           className="w-full h-48 object-cover"

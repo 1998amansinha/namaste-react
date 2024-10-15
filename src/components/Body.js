@@ -50,8 +50,9 @@ const Body = () => {
       </h1>
 
       {/* Search Bar */}
-      <div className="searchBar flex flex-col sm:flex-row items-center justify-center m-4 p-4 space-y-4 sm:space-y-0 sm:space-x-4 bg-gray-100 rounded-lg shadow-lg">
+      <div  className="searchBar flex flex-col sm:flex-row items-center justify-center m-4 p-4 space-y-4 sm:space-y-0 sm:space-x-4 bg-gray-100 rounded-lg shadow-lg">
         <input
+          data-testid="searchInput"
           type="text"
           className="border border-solid border-black rounded p-2 w-full sm:w-auto"
           placeholder="Search Restaurants..."

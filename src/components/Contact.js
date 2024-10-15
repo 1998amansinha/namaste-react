@@ -1,36 +1,35 @@
 const Contact = () => {
   return (
-    <div className="contact-container">
-      <h1>Contact Us</h1>
-      <p>
-        We would love to hear from you! Please fill out the form below and we
-        will get in touch with you shortly.
-      </p>
-
-      <div className="contact-details">
-        <h3>Our Address</h3>
-        <p>123 Delicious Street, Foodville, Taste Country</p>
-        <h3>Phone</h3>
-        <p>(123) 456-7890</p>
-        <h3>Email</h3>
-        <p>contact@ourrestaurant.com</p>
+    <div className="m-5 text-center">
+      <h1 className="font-bold text-2xl">Contact Us</h1>
+      <div className="m-10">
+        <form className="m-5 p-10">
+          <input
+            className="border border-blue-300 m-5 p-2"
+            type="text"
+            placeholder="Name"
+            name="name"
+            required
+          />
+          <input
+            className="border border-blue-300 m-5 p-2"
+            type="email"
+            placeholder="Email"
+            name="email"
+            required
+          />
+          <input
+            className="border border-blue-300 m-5 p-2"
+            type="phone"
+            placeholder="Phone Number"
+            name="phone"
+            required
+          />
+          <button className="bg-blue-300 p-3 rounded-lg hover:bg-blue-800 text-white" type="submit">
+            Submit
+          </button>
+        </form>
       </div>
-
-      <form className="contact-form">
-        <label>
-          Name:
-          <input type="text" name="name" required />
-        </label>
-        <label>
-          Email:
-          <input type="email" name="email" required />
-        </label>
-        <label>
-          Message:
-          <textarea name="message" rows="5" required></textarea>
-        </label>
-        <button type="submit">Submit</button>
-      </form>
     </div>
   );
 };
